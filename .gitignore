@@ -4,4 +4,5 @@ conspect.txt
 .venv
 draft.txt
 .draft.txt.swp
+db.*
 **/__pycache__/*

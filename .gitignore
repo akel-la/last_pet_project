@@ -2,3 +2,6 @@ conspect.txt
 .conspect.txt.swp
 .idea
 .venv
+draft.txt
+.draft.txt.swp
+**/__pycache__/*

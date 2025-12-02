@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from ..models import Quizes, Questions, Answers, Status
 
 class ModelsTests(TestCase):
+    # Этот метод выполняется каждый раз перед тестовым методом:
     def setUp(self):
         """setUp - выполняется перед каждым методом теста."""
         # Создаем вопрос:

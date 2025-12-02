@@ -27,7 +27,7 @@ class Questions(models.Model):
             amount = len(connect_answers.filter(correct_or_wrong=Answers.CorrectOrWrong.WRONG))
             if amount != Questions.false_answers_count:
                 raise ValidationError(
-                    message="Неправильное количество связанных с вопросом ответов.\nДолжно быть %(expected)s неправильных ответов.\nТекущее количество неправильных ответов: %(current)s",
+                    message="Неправильное количество связанных с вопросом неправильных ответов. Должно быть %(expected)s, текущее: %(current)s",
                     code='invalid amount connected answers',
                     params={
                         'expected': Questions.false_answers_count,
@@ -37,7 +37,7 @@ class Questions(models.Model):
             amount = len(connect_answers.filter(correct_or_wrong=Answers.CorrectOrWrong.CORRECT))
             if amount != Questions.true_answers_count:
                 raise ValidationError(
-                    message="Неправильное количество связанных с вопросом ответов.\nДолжно быть %(expected)s правильных ответов.\nТекущее количество правильных ответов: %(current)s",
+                    message="Неправильное количество связанных с вопросом ответов. Должно быть: %(expected)s, текущее: %(current)s",
                     code='invalid amount connected answers',
                     params={
                         'expected': Questions.true_answers_count,
@@ -100,7 +100,7 @@ class Quizes(models.Model):
                             max_length=100, blank=False, null=False)
     questions = models.ManyToManyField(Questions, verbose_name="Вопросы",
                                        related_name='quizes')
-    published = models.CharField(verbose_name="Статус",
+    published = models.BooleanField(verbose_name="Статус",
                                  choices=Status.choices, default=Status.DRAFT)
     def __str__(self):
         return f"{self.name}:{self.questions}:{self.published}"

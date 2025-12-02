@@ -17,7 +17,7 @@ class Questions(models.Model):
     status = models.BooleanField(verbose_name="Статус",
                                  choices=Status.choices, default=Status.DRAFT)
     text = models.TextField(verbose_name="Текст вопроса",
-                            max_length=250, blank=False, null=False)
+                            max_length=250, blank=False, null=False, unique=True)
 
     def _validation_status_field(self):
         """Проверка того, что при публикации вопроса связанные с ним ответы находятся
@@ -97,7 +97,7 @@ class Quizes(models.Model):
     не публикуются."""
 
     name = models.CharField(verbose_name="Имя викторины",
-                            max_length=100, blank=False, null=False)
+                            max_length=100, blank=False, null=False, unique=True)
     questions = models.ManyToManyField(Questions, verbose_name="Вопросы",
                                        related_name='quizes')
     published = models.BooleanField(verbose_name="Статус",

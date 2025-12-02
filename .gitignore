@@ -6,3 +6,4 @@ draft.txt
 .draft.txt.swp
 db.*
 **/__pycache__/*
+quiz/scripts

@@ -8,6 +8,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Страница отправки вопросов.</h1>
+<p>Вопрос может иметь один из двух статусов: {{ draft }} или {{ published }}.
+Для статуса {{ published }} нужно, чтобы у вопроса было {{ true_count }} правильных ответов и {{ false_count }} неправильных ответов.
+Поскольку сначала создается вопрос, а затем ответы на него, то любой созданный здесь вопрос будет иметь статус {{ draft }}.</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
 {% endblock content %}
 </body>
 </html>

@@ -19,5 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Пути для приложения:
     path('quiz/', include('quiz.urls')),
+    path('api/v1/', include('quiz.api.v1.urls')),
 ]

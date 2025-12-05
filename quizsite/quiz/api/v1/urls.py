@@ -5,10 +5,10 @@ from . import views
 
 # Роутеры - для автоматической генерации маршрутов.
 router = routers.SimpleRouter()
-router.register(r'answers', views.AnswersViewSet)
+router.register(r'answers', views.AnswerViewSet)
+router.register(r'questions', views.QuestionViewSet)
+router.register(r'quizes', views.QuizViewSet)
 
 urlpatterns = [
-    path("", include(router.urls))
-    #path("answers/", views.AnswersViewSet.as_view({"get":"list"}), name="get-answer"),
-    #path("answers/<int:pk>/", views.AnswerViewSet.as_view({"retrieve":""}))
+    path("", include(router.urls)),
 ]

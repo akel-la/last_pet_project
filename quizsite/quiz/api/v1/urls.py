@@ -1,9 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from . import views
 
-# модель/тип_запроса/
-# если на конце s - то множество записей модели.
+# Роутеры - для автоматической генерации маршрутов.
+router = routers.SimpleRouter()
+router.register(r'answers', views.AnswersViewSet)
+
 urlpatterns = [
-    path("answers/get/", views.AnswersViewSet.as_view({'get':'list'}), name="get-answer"),
+    path("", include(router.urls))
+    #path("answers/", views.AnswersViewSet.as_view({"get":"list"}), name="get-answer"),
+    #path("answers/<int:pk>/", views.AnswerViewSet.as_view({"retrieve":""}))
 ]
